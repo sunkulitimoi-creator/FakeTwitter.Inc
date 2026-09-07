@@ -1,0 +1,743 @@
+:root {
+    --bg-primary: #ffffff;
+    --bg-hover: rgba(15, 20, 25, 0.1);
+    --border: #eff3f4;
+    --text-primary: #0f1419;
+    --text-secondary: #536471;
+    --accent-blue: #1d9bf0;
+    --bg-secondary: #f7f9f9;
+    --bg-nav: rgba(255, 255, 255, 0.85);
+    --bg-input: #eff3f4;
+    --bg-input-focus: #ffffff;
+    --bg-post-hover: rgba(0, 0, 0, 0.03);
+    --bg-subtle-hover: rgba(15, 20, 25, 0.03);
+    --accent-blue-hover: #1a8cd8;
+    --text-on-accent: #ffffff;
+    --btn-follow-bg: #0f1419;
+    --btn-follow-hover: #272c30;
+    --btn-follow-text: #ffffff;
+    --btn-following-border: #cfd9de;
+    --accent-green: #00ba7c;
+    --accent-pink: #f91880;
+    --accent-red: #f4212e;
+    --hover-blue-bg: rgba(29, 155, 240, 0.1);
+    --hover-green-bg: rgba(0, 186, 124, 0.1);
+    --hover-pink-bg: rgba(249, 24, 128, 0.1);
+    --hover-red-bg: rgba(244, 33, 46, 0.1);
+}
+
+[data-theme="dark"] {
+    --bg-primary: #15202b;
+    --bg-hover: rgba(239, 243, 244, 0.1);
+    --border: #38444d;
+    --text-primary: #f7f9f9;
+    --text-secondary: #8b98a5;
+    --accent-blue: #1d9bf0;
+    --bg-secondary: #192734;
+    --bg-nav: rgba(21, 32, 43, 0.85);
+    --bg-input: #202327;
+    --bg-input-focus: #15202b;
+    --bg-post-hover: rgba(255, 255, 255, 0.03);
+    --bg-subtle-hover: rgba(239, 243, 244, 0.03);
+    --accent-blue-hover: #1a8cd8;
+    --text-on-accent: #ffffff;
+    --btn-follow-bg: #eff3f9;
+    --btn-follow-hover: #d7dbdc;
+    --btn-follow-text: #0f1419;
+    --btn-following-border: #536471;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    line-height: 1.3;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    background: none;
+}
+
+.page {
+    display: grid;
+    grid-template-columns: 275px minmax(0, 600px) 350px;
+    max-width: 1280px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+.left {
+    padding: 0 12px;
+}
+
+.side-bar,
+.recommendations {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 8px 0;
+}
+
+.side-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 24px;
+}
+
+.logo {
+    padding: 12px;
+    margin-bottom: 4px;
+    border-radius: 9999px;
+    cursor: pointer;
+    color: var(--text-primary);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.logo:hover {
+    background: var(--bg-hover);
+}
+
+.logo svg {
+    fill: currentColor;
+}
+
+.side-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 12px;
+    margin-bottom: 4px;
+    border-radius: 9999px;
+    width: fit-content;
+    min-width: 52px;
+    cursor: pointer;
+    color: var(--text-primary);
+    font-size: 20px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.side-bar-item:hover {
+    background: var(--bg-hover);
+}
+
+.side-bar-item.active {
+    font-weight: 700;
+}
+
+.side-bar-item.active a,
+.side-bar-item.active span:not(.theme-icon) {
+    font-weight: 700;
+}
+
+.side-bar-item svg {
+    flex-shrink: 0;
+    fill: currentColor;
+}
+
+.side-bar-item a,
+.side-bar-item > span:not(.theme-icon) {
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+.theme-toggle .theme-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+.theme-toggle .theme-icon svg {
+    width: 26px;
+    height: 26px;
+    fill: currentColor;
+}
+
+.blk-post-button {
+    width: 100%;
+    max-width: 234px;
+    margin: 16px 0 12px;
+    padding: 16px 32px;
+    background: var(--accent-blue);
+    color: var(--text-on-accent);
+    font-size: 17px;
+    font-weight: 700;
+    border-radius: 9999px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.blk-post-button:hover {
+    background: var(--accent-blue-hover);
+}
+
+.acc {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    margin-top: auto;
+    border-radius: 9999px;
+    width: 100%;
+    max-width: 260px;
+    cursor: pointer;
+    color: var(--text-primary);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.acc:hover {
+    background: var(--bg-hover);
+}
+
+.acc .profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.acc .acc-details {
+    flex: 1;
+    min-width: 0;
+    line-height: 1.2;
+}
+
+.acc .display-name {
+    font-weight: 700;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.acc .username {
+    color: var(--text-secondary);
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color 0.2s;
+}
+
+.acc .acc-more {
+    flex-shrink: 0;
+    color: var(--text-primary);
+    transition: color 0.2s;
+}
+
+.feed {
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    min-height: 100vh;
+    background: var(--bg-primary);
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+nav.nav-bar {
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--bg-nav);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.nav-item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 16px;
+    cursor: pointer;
+    position: relative;
+    min-height: 53px;
+    transition: background-color 0.2s;
+}
+
+.nav-item:hover {
+    background: var(--bg-hover);
+}
+
+.nav-item h2 {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    padding: 16px 0;
+    transition: color 0.2s;
+}
+
+.nav-item.active h2 {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.nav-item.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 56px;
+    height: 4px;
+    background: var(--accent-blue);
+    border-radius: 9999px;
+    transition: background-color 0.2s;
+}
+
+.nav-bar > svg {
+    margin-right: 16px;
+    padding: 8px;
+    border-radius: 9999px;
+    cursor: pointer;
+    flex-shrink: 0;
+    color: var(--text-secondary);
+    fill: currentColor;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-bar > svg:hover {
+    background: var(--bg-hover);
+}
+
+.tweet-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-primary);
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.tweet-form .form-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+.tweet-input {
+    flex: 1;
+    min-width: 0;
+}
+
+.tweet-input textarea {
+    width: 100%;
+    min-height: 52px;
+    max-height: 300px;
+    padding: 12px 0;
+    font-family: inherit;
+    font-size: 20px;
+    color: var(--text-primary);
+    background: transparent;
+    resize: none;
+    outline: none;
+    overflow: hidden;
+    line-height: 24px;
+    transition: color 0.2s;
+}
+
+.tweet-input textarea::placeholder {
+    color: var(--text-secondary);
+}
+
+.tweet-form .form-actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+    margin-left: 52px;
+    transition: border-color 0.2s;
+}
+
+.tweet-form button[type="submit"] {
+    padding: 8px 16px;
+    background: var(--accent-blue);
+    color: var(--text-on-accent);
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 9999px;
+    transition: background-color 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.tweet-form button[type="submit"]:hover:not(:disabled) {
+    background: var(--accent-blue-hover);
+}
+
+.tweet-form button[type="submit"]:disabled {
+    background: var(--accent-blue);
+    opacity: 0.5;
+    cursor: default;
+}
+
+.feed-posts {
+    display: flex;
+    flex-direction: column;
+}
+
+.post {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 0 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    background: var(--bg-primary);
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.post:hover {
+    background: var(--bg-post-hover);
+}
+
+.post .profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    grid-row: 1 / 3;
+}
+
+.post .post-header {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px;
+    line-height: 20px;
+}
+
+.post .display-name {
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.post .username,
+.post .timestamp {
+    color: var(--text-secondary);
+    font-size: 15px;
+    transition: color 0.2s;
+}
+
+.post .timestamp::before {
+    content: "·";
+    margin-right: 4px;
+}
+
+.post .content {
+    grid-column: 2;
+    font-size: 15px;
+    margin-top: 2px;
+    margin-bottom: 12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.post .post-actions {
+    grid-column: 2;
+    display: flex;
+    justify-content: space-between;
+    max-width: 425px;
+    margin-top: 4px;
+}
+
+.post-action {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    padding: 8px;
+    margin: -8px;
+    border-radius: 9999px;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.post-action svg {
+    width: 18px;
+    height: 18px;
+}
+
+.post-action:hover {
+    background: var(--hover-blue-bg);
+    color: var(--accent-blue);
+}
+
+.post-action.reply:hover {
+    background: var(--hover-blue-bg);
+    color: var(--accent-blue);
+}
+
+.post-action.retweet:hover,
+.post-action.retweet.active {
+    background: var(--hover-green-bg);
+    color: var(--accent-green);
+}
+
+.post-action.retweet.active svg {
+    fill: var(--accent-green);
+}
+
+.post-action.like:hover,
+.post-action.like.active {
+    background: var(--hover-pink-bg);
+    color: var(--accent-pink);
+}
+
+.post-action.like.active svg {
+    fill: var(--accent-pink);
+}
+
+.post-action.share:hover {
+    background: var(--hover-blue-bg);
+    color: var(--accent-blue);
+}
+
+.recommendations {
+    padding: 8px 0 8px 24px;
+}
+
+.search-area {
+    position: sticky;
+    top: 8px;
+    z-index: 10;
+    margin-bottom: 16px;
+}
+
+.search-area input {
+    width: 100%;
+    padding: 12px 16px 12px 44px;
+    background: var(--bg-input);
+    border-radius: 9999px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--text-primary);
+    outline: none;
+    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.search-area input:focus {
+    background: var(--bg-input-focus);
+    box-shadow: 0 0 0 1px var(--accent-blue);
+}
+
+.search-area input::placeholder {
+    color: var(--text-secondary);
+}
+
+.search-area {
+    position: relative;
+}
+
+.search-area::before {
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    background-color: var(--text-secondary);
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M10.25 3.75c-3.59 0-6.5 2.91-6.5 6.5s2.91 6.5 6.5 6.5c1.795 0 3.419-.726 4.596-1.904 1.178-1.177 1.904-2.801 1.904-4.596 0-3.59-2.91-6.5-6.5-6.5zm-8.5 6.5c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5c0 1.986-.682 3.815-1.824 5.262l4.781 4.781-1.414 1.414-4.781-4.781c-1.447 1.142-3.276 1.824-5.262 1.824-4.694 0-8.5-3.806-8.5-8.5z'/%3E%3C/svg%3E");
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M10.25 3.75c-3.59 0-6.5 2.91-6.5 6.5s2.91 6.5 6.5 6.5c1.795 0 3.419-.726 4.596-1.904 1.178-1.177 1.904-2.801 1.904-4.596 0-3.59-2.91-6.5-6.5-6.5zm-8.5 6.5c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5c0 1.986-.682 3.815-1.824 5.262l4.781 4.781-1.414 1.414-4.781-4.781c-1.447 1.142-3.276 1.824-5.262 1.824-4.694 0-8.5-3.806-8.5-8.5z'/%3E%3C/svg%3E");
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    pointer-events: none;
+    transition: background-color 0.2s;
+}
+
+.suggested {
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: background-color 0.2s;
+}
+
+.suggested-header {
+    padding: 12px 16px;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text-primary);
+    transition: color 0.2s;
+}
+
+.suggested-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    transition: background-color 0.2s;
+}
+
+.suggested-user:hover {
+    background: var(--bg-subtle-hover);
+}
+
+.suggested-user .profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.suggested-user .user-info {
+    flex: 1;
+    min-width: 0;
+    line-height: 1.2;
+}
+
+.suggested-user .display-name {
+    font-weight: 700;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.suggested-user .username {
+    color: var(--text-secondary);
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color 0.2s;
+}
+
+.follow-btn {
+    padding: 8px 16px;
+    background: var(--btn-follow-bg);
+    color: var(--btn-follow-text);
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 9999px;
+    flex-shrink: 0;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.follow-btn:hover {
+    background: var(--btn-follow-hover);
+}
+
+.follow-btn.following {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--btn-following-border);
+}
+
+.follow-btn.following:hover {
+    background: var(--hover-red-bg);
+    color: var(--accent-red);
+    border-color: rgba(244, 33, 46, 0.4);
+}
+
+.suggested-footer {
+    padding: 16px;
+    color: var(--accent-blue);
+    font-size: 15px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.suggested-footer:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .page {
+        grid-template-columns: 1fr;
+    }
+
+    .side-bar {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        z-index: 20;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        width: 100%;
+        height: auto;
+        padding: 4px 8px;
+        border-top: 1px solid var(--border);
+        background: var(--bg-primary);
+        overflow-x: auto;
+    }
+
+    .side-bar .logo,
+    .side-bar .blk-post-button,
+    .side-bar .acc {
+        display: none;
+    }
+
+    .side-bar-item {
+        flex: 0 0 auto;
+        justify-content: center;
+        margin: 0;
+        padding: 10px;
+    }
+
+    .side-bar-item a,
+    .side-bar-item > span:not(.theme-icon) {
+        display: none;
+    }
+
+    .recommendations {
+        display: none;
+    }
+
+    .feed {
+        width: 100%;
+        min-height: 100vh;
+        padding-bottom: 64px;
+        border-left: 0;
+        border-right: 0;
+    }
+
+    .tweet-form {
+        padding: 12px;
+    }
+
+    .tweet-form .form-actions {
+        margin-left: 52px;
+    }
+}
+
+@media (max-width: 768px) {
+    .post {
+        padding: 12px;
+    }
+
+    .post .post-actions {
+        max-width: none;
+    }
+
+    .tweet-input textarea {
+        font-size: 18px;
+    }
+}
